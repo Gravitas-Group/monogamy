@@ -831,6 +831,21 @@
       height: 16px;
     }
 
+    .projects-wrapper {
+    display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+  gap: 20px; /* Adds space between items */
+  justify-content: center; /* Centers items horizontally */
+  align-items: stretch; /* Aligns items vertically */
+  padding: 20px;
+  box-sizing: border-box;
+    }
+    
+ .projects-item {
+    flex: 1 1 300px; /* Allows items to grow and shrink with a base width of 300px */
+  max-width: 300px; /* Ensures items don't exceed 300px */
+  box-sizing: border-box;
+ }
     
   </style>
   
