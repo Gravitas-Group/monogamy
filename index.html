@@ -751,6 +751,89 @@
       }
 
   </style>
+
+
+  <!---ONBOARDING FORM CSS--->
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    .form-container {
+      padding: 40px 20px;
+      max-width: 500px;
+      margin: auto;
+      background-color: #121212;
+    }
+
+    .form-container h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .form-container p {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .form-container a {
+      color: #ccc;
+      text-decoration: underline;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    label span {
+      color: red;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #333;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    select:invalid {
+      color: #aaa;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #fff;
+      color: #000;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button svg {
+      width: 16px;
+      height: 16px;
+    }
+  </style>
+  
   <script type="text/javascript" src=
   "https://vaultcdn.electricapps.net/lib/jquery-ui-min.js?shop=undefined"
   async="async"></script>
@@ -780,7 +863,7 @@
       <div class="menu-nav-wrap">
         <h3 data-w-id="Heading 4" style=
         "opacity:0;-webkit-transform:translate3d(80px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(80px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(80px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(80px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-        class="text-white margin-s">Register</h3>
+        class="text-white margin-s">Getting Started</h3>
         <p data-w-id="Paragraph" style=
         "opacity:0;-webkit-transform:translate3d(80px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(80px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(80px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(80px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
         class="paragraph-l text-white margin-m">Get uninterrupted
@@ -795,8 +878,43 @@
         style="opacity:0" class="form-block w-form">
           <form style="color:white!important" class=
           "field-label field-input">
-            [nerdy-form:7622]
-          </form>
+            
+      <label for="name">YOUR NAME <span>*</span></label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">EMAIL <span>*</span></label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">PHONE <span>*</span></label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="service">HOW CAN WE HELP YOU? <span>*</span></label>
+      <select id="service" name="service" required>
+        <option value="" disabled selected>Choose a service</option>
+        <option value="consulting">Build A New Website or Online Store</option>
+        <option value="design">Search Engine Optimization</option>
+        <option value="development">Upgrade An Existing Website</option>
+      </select>
+
+      <label for="referral">WHERE DID YOU FIND OUT ABOUT US? (OPTIONAL)</label>
+      <select id="referral" name="referral">
+        <option value="" disabled selected>Choose an option</option>
+        <option value="google">Google</option>
+        <option value="social">Social Media</option>
+        <option value="referral">Referral</option>
+        <option value="referral">Yelp</option>
+      </select>
+
+      <button type="submit">
+        <svg fill="currentColor" viewBox="0 0 24 24">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+        </svg>
+        SEND
+      </button>
+    </form>
+
+
+            
           <div class="success-message w-form-done">
             <div class="success-message-text">
               Thank you! Your message has been received. We'll be
