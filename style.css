@@ -987,10 +987,10 @@ a {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 560px;
+  width: 100%;
   height: 65vh;
-  max-height: 560px;
-  margin-right: 40px;
+  max-height: 640px;
+  margin-right: 20px auto;
   padding: 24px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -4646,7 +4646,7 @@ a {
   .project-wrapper {
     width: 100%;
     margin-right: 0px;
-    margin-bottom: 5%;
+    margin-bottom: 20px;
   }
 
   .blur-background {
