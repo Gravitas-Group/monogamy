@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Monogamy™ - Digital Brand Architects</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to bottom right, #00d4ff, #fc5c7d);
       color: #111;
       line-height: 1.6;
       padding: 20px;
+      overflow-x: hidden;
+    }
+
+    body.lock-scroll {
+      overflow: hidden;
     }
 
     header {
@@ -32,21 +32,56 @@
       font-weight: 600;
     }
 
-    nav {
+    .menu-toggle {
       font-size: 2rem;
       cursor: pointer;
+      background: none;
+      border: none;
+      z-index: 1001;
+    }
+
+    /* Side Drawer */
+    .side-drawer {
+      position: fixed;
+      top: 0;
+      right: -260px;
+      width: 250px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      border-left: 2px solid #000;
+      box-shadow: -4px 0 8px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      transition: right 0.3s ease-in-out;
+      z-index: 1000;
+    }
+
+    .side-drawer.show { right: 0; }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.3);
+      z-index: 999;
+      display: none;
+    }
+
+    .overlay.show { display: block; }
+
+    .side-drawer a {
+      padding: 12px 0;
+      font-weight: bold;
+      color: #000;
+      text-decoration: none;
+      border-bottom: 1px solid #000;
     }
 
     h2 {
       font-size: 2.5rem;
       margin-top: 30px;
       font-weight: bold;
-    }
-
-    h3 {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 10px;
     }
 
     .tagline {
@@ -91,6 +126,7 @@
       text-decoration: none;
       color: #000;
       font-weight: 600;
+      cursor: pointer;
     }
 
     .service-label {
@@ -111,8 +147,67 @@
       padding: 20px;
       background: rgba(255, 255, 255, 0.2);
       border-top: 1px solid #000;
-      text-align: center;
       font-size: 0.9rem;
+    }
+
+    .footer-contact {
+      margin-top: 10px;
+    }
+
+    .footer-contact p {
+      margin: 5px 0;
+    }
+
+    .footer-contact a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    /* Modal Form */
+    .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: #fff;
+      border: 2px solid #000;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      z-index: 1002;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .modal.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .modal h3 {
+      margin-bottom: 10px;
+    }
+
+    .modal form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal form input, .modal form select, .modal form textarea {
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+    }
+
+    .modal form button {
+      padding: 10px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
     }
 
     @media(max-width: 768px) {
@@ -124,13 +219,22 @@
 </head>
 <body>
 
+  <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+
   <header>
-    <h1>Monogamy™</h1>
-    <nav>☰</nav>
+    <h1>Monogamy Dig</h1>
+    <button class="menu-toggle" onclick="toggleDrawer()">☰</button>
   </header>
 
+  <nav class="side-drawer" id="drawer">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </nav>
+
   <main>
-    <h2>South Africa's</h2>
+    <h2></h2>
     <div class="tagline">Digital Brand Architects.</div>
 
     <div class="container">
@@ -146,7 +250,7 @@
 
       <div class="card">
         <p><strong>Monogamy™</strong> was built on the premise that simple can be extraordinary.</p>
-        <a class="btn" href="#">About Us →</a>
+        <button class="btn" onclick="openModal()">Request a Quote →</button>
       </div>
     </div>
 
@@ -158,8 +262,8 @@
     </div>
 
     <blockquote>
-      “Running multiple programs from different locations can make it hard to develop a unified message to the public. Monogamy™ worked with us to narrow our focus and create clear and concise messaging. I would highly recommend Monogamy™ as an extremely knowledgeable resource for new or established companies.”<br>
-      <strong>— Phindile Spies, CEO<br>Thembani International Guarantee Fund</strong>
+      “Running multiple programs from different locations can make it hard to develop a unified message to the public. Monogamy™ worked with us to narrow our focus and create clear and concise messaging...”<br>
+      <strong>— Phindile Spies, CEO</strong>
     </blockquote>
 
     <div class="card">
@@ -168,16 +272,60 @@
       <p><strong>Let us help you craft professional</strong> graphics for your next campaign.</p>
       <a class="btn" href="#">Learn More →</a>
     </div>
-
-    <blockquote>
-      “Monogamy got right down to the core of what we needed to do to attract, relate, and build a new client base. Kim saved us a ton of time. Mike reorganized our website, and simplified our messaging to match our core audience! <strong>We now stand apart from the crowd, thanks to Monogamy™.</strong>”<br>
-      <strong>— Themba Ndlovu, Director<br>Tlean Professional Cleaning Services</strong>
-    </blockquote>
   </main>
 
   <footer>
-    &copy; 2025 Monogamy™. All rights reserved. | Built with 💡 and precision in South Africa.
+    <div>&copy; 2025 Monogamy Digital. All rights reserved.</div>
+    <div class="footer-contact">
+      <p>📞 <a href="tel:4157793737">(415) 779-3737</a></p>
+      <p>✉️ <a href="mailto:info@monogamy.digital">info@monogamy.digital</a></p>
+      <p>📍 2261 Market Str, Suite 85527,<br>San Francisco, CA 94114</p>
+    </div>
   </footer>
+
+  <!-- Modal Contact Form -->
+  <div class="modal" id="contactModal">
+    <h3>Let’s Build Something Amazing</h3>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="tel" placeholder="Phone Number" />
+      <select required>
+        <option value="">Select a Service</option>
+        <option>Web Development</option>
+        <option>Social Media Management</option>
+        <option>Internet Marketing</option>
+        <option>Digital Content Creation</option>
+      </select>
+      <textarea placeholder="Tell us a bit about your project..." rows="4"></textarea>
+      <button type="submit">Submit Inquiry</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleDrawer() {
+      document.getElementById('drawer').classList.add('show');
+      document.getElementById('overlay').classList.add('show');
+      document.body.classList.add('lock-scroll');
+    }
+
+    function closeDrawer() {
+      document.getElementById('drawer').classList.remove('show');
+      document.getElementById('overlay').classList.remove('show');
+      document.body.classList.remove('lock-scroll');
+    }
+
+    function openModal() {
+      document.getElementById('contactModal').classList.add('show');
+      document.getElementById('overlay').classList.add('show');
+      document.body.classList.add('lock-scroll');
+    }
+
+    document.getElementById('overlay').addEventListener('click', function () {
+      document.getElementById('contactModal').classList.remove('show');
+      closeDrawer();
+    });
+  </script>
 
 </body>
 </html>
